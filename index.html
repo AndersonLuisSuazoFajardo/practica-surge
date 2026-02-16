@@ -25,15 +25,16 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       animation: fadeIn 1.5s ease-in-out;
+      max-width: 400px;
     }
 
     h1 {
       margin-bottom: 10px;
-      font-size: 2.5em;
+      font-size: 2em;
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1.1em;
       opacity: 0.9;
     }
 
@@ -54,6 +55,17 @@
       transform: scale(1.05);
     }
 
+    .mensaje {
+      margin-top: 15px;
+      font-size: 0.9em;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .mostrar {
+      opacity: 1;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
@@ -66,8 +78,21 @@
   <div class="card">
     <h1>🚀 Hola mundo desde Surge</h1>
     <p>Desplegado automáticamente con GitHub Actions</p>
-    <button class="btn">Integración Continua Activa</button>
+
+    <button class="btn" onclick="mostrarMensaje()">
+      Ver estado del Deploy
+    </button>
+
+    <div id="mensaje" class="mensaje">
+      ✔ Integración Continua activa: cada push a main despliega automáticamente en Surge.
+    </div>
   </div>
+
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").classList.toggle("mostrar");
+    }
+  </script>
 
 </body>
 </html>
